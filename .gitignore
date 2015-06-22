@@ -1,3 +1,5 @@
+cities.csv
+countries.csv
 db/*.sqlite3
 log
 vendor

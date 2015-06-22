@@ -6,13 +6,13 @@ require 'iso3166'
 # CONFIG OPTIONS STARTS
 #
 
-COUNTRIES_FOLDER = "GeoLite2-Country-CSV_20150505"
+COUNTRIES_FOLDER = "GeoLite2-Country-CSV_20150602"
 COUNTRIES_FILE = "GeoLite2-Country-Locations-en.csv"
 
-CITIES_FOLDER1 = "GeoLite2-City-CSV_20150505"
+CITIES_FOLDER1 = "GeoLite2-City-CSV_20150602"
 CITIES_FILE1 = "GeoLite2-City-Locations-en.csv"
 
-CITIES_FOLDER2 = "GeoLiteCity_20150505"
+CITIES_FOLDER2 = "GeoLiteCity_20150602"
 CITIES_FILE2 = "GeoLiteCity-Location.csv"
 
 #

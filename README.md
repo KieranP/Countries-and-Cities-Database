@@ -23,6 +23,10 @@ However, you can easily clone this repo and follow the instructions below to cre
 
 * Edit `parse.rb` and adjust the config settings at the top
 
+* Setup database
+
+  $ rake db:migrate
+
 * Start parsing through all the data to create the database
 
   $ ruby parse.rb
@@ -34,17 +38,40 @@ However, you can easily clone this repo and follow the instructions below to cre
     > Continent.count
      => 7
     > Country.count
-     => 249
+     => 247
     > City.count
-     => 68484
+     => 71475
     > continent = Continent.find_by_code("NA")
      => #<Continent id: 6, name: "North America", code: "NA", translations: nil>
     > country = continent.countries.find_by_alpha2("US")
-     => #<Country id: 241, continent_id: 6, currency_id: 59, name: "United States", alpha2: "US", alpha3: "USA", country_code: "1", world_region: "AMER", region: "Americas", subregion: "Northern America", latitude: 38.0, longitude: 97.0, translations: {"en"=>"United States", "es"=>"Estados Unidos", ...}>
+     => #<Country id: 240, continent_id: 6, currency_id: 59, name: "United States", alpha2: "US", alpha3: "USA", country_code: "1", world_region: "AMER", region: "Americas", subregion: "Northern America", latitude: 38.0, longitude: 97.0, translations: {"en"=>"United States", "es"=>"Estados Unidos", ...}>
     > country.currency
      => #<Currency id: 59, name: "Dollars", code: "USD", symbol: "$">
     > country.cities.find_by_name("New York")
-     => #<City id: 60723, country_id: 241, name: "New York", latitude: 40.7528, longitude: -73.9725, time_zone: "America/New_York", translations: nil>
+     => #<City id: 63585, country_id: 240, name: "New York", latitude: 40.7528, longitude: -73.9725, time_zone: "America/New_York", translations: nil>
+
+## Export to CSV
+
+Often you'll want to have it in a format that you can easily parse into your own application.
+
+You can export the countries and cities into a CSV file by running the following command:
+
+    $ ruby export.rb
+
+    $ ls *.csv
+    cities.csv countries.csv
+
+    $ cat countries.csv
+    Name,Alpha2,Alpha3,Continent,World Region,Region,Subregion,Latitude,Longitude,Currency Code,Currency Symbol
+    ...
+    United States,US,USA,North America,AMER,Americas,Northern America,38.0,97.0,USD,$
+    ...
+
+    $ cat cities.csv
+    Name,Country,Latitude,Longitude,Time Zone
+    ...
+    New York,United States,40.7528,-73.9725,America/New_York
+    ...
 
 ## Credits
 
